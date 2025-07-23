@@ -1,0 +1,88 @@
+/* General Styles */
+body {
+  background: linear-gradient(45deg, transparent 49%, #dedede 49% 51%, transparent 51%),
+    linear-gradient(-45deg, transparent 49%, #dedede 49% 51%, transparent 51%);
+  background-size: 3em 3em;
+  background-color: #ffffff;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Anime Character Overlay */
+.chara-overlay {
+  width: 40%;
+  position: fixed;
+  bottom: 0;
+  z-index: 1001;
+}
+
+.chara-overlay.left {
+  left: -20%;
+}
+
+.chara-overlay.right {
+  right: -20%;
+}
+
+/* Hint Item Accordion */
+.hint-item img {
+  max-width: 250px;
+  object-fit: contain;
+}
+
+/* Bootstrap Class Overrides */
+.container {
+  max-width: 800px !important;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+p {
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1150px) {
+  .chara-overlay {
+    display: none;
+  }
+}
+
+/* Map Overlay  */
+#map-overlay {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  background: radial-gradient(ellipse at center, #3b88c3 0%, #1a3c64 100%);
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+#map-overlay svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
+}
+
+#map-overlay svg path {
+  fill: #7fc37b;
+  stroke: #5e5e5e;
+  stroke-width: 0.3;
+  transition: fill 0.3s ease;
+}
+
+.highlighted {
+  fill: #ffd166 !important;
+  stroke: #ff8800;
+  stroke-width: 0.5;
+  filter: drop-shadow(0 0 8px rgba(255, 209, 102, 0.8));
+}
