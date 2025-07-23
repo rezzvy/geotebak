@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body class="text-dark">
-    <div id="map-overlay"></div>
-
+    <div id="map-overlay" class=""></div>
     <img class="chara-overlay left" src="https://www.clipartmax.com/png/full/53-534843_earth-chan-by-zacatron94-earth-chan-png.png" />
     <img class="chara-overlay right" src="https://www.clipartmax.com/png/full/53-534843_earth-chan-by-zacatron94-earth-chan-png.png" />
 
@@ -40,7 +39,7 @@
                 <span class="badge text-bg-primary text-uppercase">N/A</span>
               </div>
 
-              <input type="text" class="form-control text-uppercase text-center fs-4 p-0 font-monospace rounded-0" placeholder="TYPE HERE..." />
+              <input type="text" class="form-control text-uppercase text-center fs-4 p-0 font-monospace rounded-0" placeholder="TYPE HERE" />
             </div>
 
             <div class="text-center">
@@ -192,7 +191,7 @@
                 </ul>
               </section>
 
-              <button class="btn btn-success w-100 fw-bold">Start Game</button>
+              <button class="btn btn-success w-100 fw-bold" id="start-game-btn">Start Game</button>
             </main>
 
             <footer class="text-center">
@@ -207,20 +206,6 @@
     </div>
 
     <script src="./lib/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      new bootstrap.Modal("#main-menu-modal").show();
-
-      fetch("./assets/world.svg")
-        .then((res) => res.text())
-        .then((svgText) => {
-          document.getElementById("map-overlay").innerHTML = svgText;
-          svgRoot = document.querySelector("#map-overlay svg");
-
-          if (!svgRoot.hasAttribute("viewBox")) {
-            const bbox = svgRoot.getBBox();
-            svgRoot.setAttribute("viewBox", `${bbox.x} ${bbox.y} ${bbox.width} ${bbox.height}`);
-          }
-        });
-    </script>
+    <script src="./src/main.js"></script>
   </body>
 </html>

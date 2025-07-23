@@ -15,7 +15,9 @@ img {
   width: 40%;
   position: fixed;
   bottom: 0;
-  z-index: 1001;
+  z-index: 1000;
+  pointer-events: none;
+  filter: grayscale(0.35);
 }
 
 .chara-overlay.left {
@@ -85,4 +87,50 @@ p {
   stroke: #ff8800;
   stroke-width: 0.5;
   filter: drop-shadow(0 0 8px rgba(255, 209, 102, 0.8));
+}
+
+@keyframes pingFlash {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* States  */
+
+#gameplay,
+#map-overlay,
+.chara-overlay {
+  transition: opacity 500ms ease-in-out;
+}
+
+body.game-state-on-landing #gameplay,
+body.game-state-on-landing .chara-overlay,
+body.game-state-on-started #map-overlay,
+body:not(.game-state-on-started) #gameplay,
+body.game-state-on-started #map-overlay,
+body.game-state-on-relanding #gameplay,
+body.game-state-on-relanding .chara-overlay {
+  opacity: 0;
+  pointer-events: none;
+}
+
+body.game-state-on-landing #map-overlay svg {
+  animation: pingFlash 1000ms ease-in-out 2;
+  transform-origin: center;
+}
+
+body.game-state-on-started #gameplay,
+body.game-state-on-relanding #map-overlay {
+  opacity: 1;
+}
+
+body.game-state-on-landing,
+body.game-state-on-relanding {
+  overflow: hidden;
 }
