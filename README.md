@@ -3,8 +3,9 @@
 
 This game is for fun, and some assets are used without permission from their original owners. I do not claim any copyright over these assets, they still belong to their respective owners. Here's some information:
 
-- World Map SVG from [mapsvg.com](https://mapsvg.com/maps/world)
-- Character Earth-chan by [zacatron94](https://www.deviantart.com/zacatron94/art/Earth-chan-721174731)
+- World map SVG from [mapsvg.com](https://mapsvg.com/maps/world)
+- Earth-chan character by [zacatron94](https://www.deviantart.com/zacatron94/art/Earth-chan-721174731)
+- Flag images from [flagcdn.com](https://flagcdn.com/)
 
 # GEOTebak
 

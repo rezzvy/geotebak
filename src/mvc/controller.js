@@ -42,7 +42,6 @@ export default class Controller {
 
       this.reset(() => {
         this.model.isGameStarted = true;
-        
         this.view.startGameButtonState(true);
         this.view.setViewState("game-state-on-landing");
         this.jump();
@@ -97,7 +96,16 @@ export default class Controller {
     this.view.el("#country-name-input").value = "";
     this.view.el("#country-name-input").blur();
 
-    const { iso, name, hint, landmark, food, continent } = this.model.getRandomCountry();
+    const currentCountry = this.model.getRandomCountry();
+
+    if (!currentCountry) {
+      this.start(false);
+      alert("You finished the game! Congrats!");
+      return;
+    }
+
+    const { iso, name, hint, landmark, food, continent } = currentCountry;
+
     this.view.setCurrentCountryData(iso, hint, landmark, food, continent);
     this.view.setCurrentGameStateData({ stage: this.model.stage, level: this.model.level });
 

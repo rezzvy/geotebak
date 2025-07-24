@@ -79,7 +79,6 @@ p {
   fill: #7fc37b;
   stroke: #5e5e5e;
   stroke-width: 0.3;
-  transition: fill 0.3s ease;
 }
 
 .highlighted {
@@ -107,6 +106,10 @@ body:not(.on-mobile) #gameplay,
 body:not(.on-mobile) #map-overlay,
 body:not(.on-mobile) .chara-overlay {
   transition: opacity 500ms ease-in-out;
+}
+
+body:not(.on-mobile) #map-overlay svg path {
+  transition: fill 0.3s ease;
 }
 
 body.game-state-on-landing #gameplay,
