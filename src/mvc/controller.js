@@ -41,6 +41,9 @@ export default class Controller {
       this.view.showModal("result", false);
 
       this.reset(() => {
+        this.model.isGameStarted = true;
+        
+        this.view.startGameButtonState(true);
         this.view.setViewState("game-state-on-landing");
         this.jump();
       });
@@ -124,7 +127,7 @@ export default class Controller {
 
       this.model.timer -= 1;
       this.view.setCurrentGameStateData({ timer: this.model.timer });
-    }, 1000);
+    }, 100);
   }
 
   start(bool) {
