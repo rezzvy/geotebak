@@ -127,7 +127,7 @@ export default class Controller {
 
       this.model.timer -= 1;
       this.view.setCurrentGameStateData({ timer: this.model.timer });
-    }, 100);
+    }, 1000);
   }
 
   start(bool) {
