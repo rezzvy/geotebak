@@ -11,8 +11,8 @@
   </head>
   <body class="text-dark">
     <div id="map-overlay" class=""></div>
-    <img class="chara-overlay left" src="https://www.clipartmax.com/png/full/53-534843_earth-chan-by-zacatron94-earth-chan-png.png" />
-    <img class="chara-overlay right" src="https://www.clipartmax.com/png/full/53-534843_earth-chan-by-zacatron94-earth-chan-png.png" />
+    <img class="chara-overlay left" src="./assets/anime-girl.webp" />
+    <img class="chara-overlay right" src="./assets/anime-girl.webp" />
 
     <div id="gameplay" class="pt-3" style="padding-bottom: 54px">
       <div class="container">
@@ -42,7 +42,7 @@
               <img id="output-current-flag" src="#" class="shadow rounded-1" style="height: 120px" />
 
               <div class="mt-3 mb-2">
-                <span id="country-name-input-status" class="badge text-bg-primary text-uppercase">N/A</span>
+                <span id="country-name-input-status" class="badge text-bg-primary text-uppercase">Waiting for an input</span>
               </div>
 
               <input
@@ -50,6 +50,7 @@
                 type="text"
                 class="form-control text-uppercase text-center fs-4 p-0 font-monospace rounded-0"
                 placeholder="TYPE HERE"
+                autocomplete="off"
               />
             </div>
 
@@ -70,7 +71,7 @@
                 </h2>
                 <div id="landmark-hint-container" class="accordion-collapse collapse" data-bs-parent="#landmark-hint-container">
                   <div class="accordion-body hint-item text-center">
-                    <p class="alert alert-danger m-1">Some pictures are just examples, so they might not look right.</p>
+                    <p class="alert alert-danger m-1 p-2">Some pictures are just examples, so they might not look right.</p>
 
                     <p>This country has a famous landmark like <span id="output-current-landmark">N/A</span></p>
 
@@ -88,7 +89,7 @@
                 </h2>
                 <div id="food-hint-container" class="accordion-collapse collapse" data-bs-parent="#food-hint-container">
                   <div class="accordion-body hint-item text-center">
-                    <p class="alert alert-danger m-1">Some pictures are just examples, so they might not look right.</p>
+                    <p class="alert alert-danger m-1 p-2">Some pictures are just examples, so they might not look right.</p>
 
                     <p>This country has a famous food like <span id="output-current-food">N/A</span></p>
                     <p>
@@ -126,7 +127,6 @@
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5 fw-bold text-success">Result</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <div class="mt-2 mb-3 text-center">
@@ -134,20 +134,20 @@
                 <div class="col">
                   <div class="border p-2 rounded-2">
                     <span class="badge text-bg-dark text-capitalize mb-1">Reached Stage</span>
-                    <span class="d-block fs-1 fw-bold lh-1 text-success text-capitalize" id="game-result-reached-stage">Maniac</span>
+                    <span class="d-block fs-1 fw-bold lh-1 text-success text-capitalize" id="game-result-reached-stage">N/A</span>
                   </div>
                 </div>
 
                 <div class="col">
                   <div class="border p-2 rounded-2">
                     <span class="badge text-bg-dark text-capitalize mb-1">Wrong Guess</span>
-                    <span class="d-block fs-1 fw-bold lh-1 text-success" id="game-result-wrong-guess">France</span>
+                    <span class="d-block fs-1 fw-bold lh-1 text-success" id="game-result-wrong-guess">N/A</span>
                   </div>
                 </div>
                 <div class="col">
                   <div class="border p-2 rounded-2">
-                    <span class="badge text-bg-dark text-capitalize mb-1">Level/Total Guessed</span>
-                    <span class="d-block fs-1 fw-bold lh-1 text-success" id="game-result-level">16</span>
+                    <span class="badge text-bg-dark text-capitalize mb-1">Level</span>
+                    <span class="d-block fs-1 fw-bold lh-1 text-success" id="game-result-level">N/A</span>
                   </div>
                 </div>
               </div>
@@ -182,12 +182,12 @@
                 <div class="row row-cols-2 g-2">
                   <div class="col">
                     <button class="btn btn-outline-success w-100 lang-switcher-btn" data-lang="en">
-                      <img src="https://flagsapi.com/US/shiny/64.png" />
+                      <img src="./assets/EN.png" />
                     </button>
                   </div>
                   <div class="col">
                     <button class="btn btn-outline-success w-100 border-0 lang-switcher-btn" data-lang="id">
-                      <img src="https://flagsapi.com/ID/shiny/64.png" />
+                      <img src="./assets/ID.png" />
                     </button>
                   </div>
                 </div>
@@ -220,7 +220,6 @@
     </div>
 
     <script src="./lib/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./src/dataset.js"></script>
-    <script src="./src/main.js"></script>
+    <script src="./src/main.js" type="module"></script>
   </body>
 </html>

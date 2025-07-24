@@ -115,7 +115,8 @@ body.game-state-on-started #map-overlay,
 body:not(.game-state-on-started) #gameplay,
 body.game-state-on-started #map-overlay,
 body.game-state-on-relanding #gameplay,
-body.game-state-on-relanding .chara-overlay {
+body.game-state-on-relanding .chara-overlay,
+body:not(.game-state-on-started) .btn-close {
   opacity: 0;
   pointer-events: none;
 }
@@ -137,4 +138,9 @@ body.game-state-on-relanding {
 
 button > img {
   pointer-events: none;
+}
+
+body.game-state-on-started .lang-switcher-btn {
+  pointer-events: none;
+  opacity: 0.5;
 }
