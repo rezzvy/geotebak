@@ -5,10 +5,12 @@ export default class Controller {
   }
 
   async init() {
+    if (this.model.isOnMobileDevice()) document.body.classList.add("on-mobile");
+
     await this.#fetchDataset();
     await this.#fetchMapSVG();
-    this.view.showModal("main-menu", true);
 
+    this.view.showModal("main-menu", true);
     this.view.els(".lang-switcher-btn").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         let currentActive = this.view.el(".lang-switcher-btn:not(.border-0)");
@@ -25,7 +27,7 @@ export default class Controller {
       this.model.isGamePaused = true;
       clearInterval(this.model.interval);
 
-      this.view.mainMenuModal.show();
+      this.view.showModal("main-menu", true);
     });
 
     this.view.mainMenuModal._element.addEventListener("hidden.bs.modal", () => {
@@ -36,7 +38,7 @@ export default class Controller {
     });
 
     this.view.el("#play-again-btn").addEventListener("click", (e) => {
-      this.view.resultModal.hide();
+      this.view.showModal("result", false);
 
       this.reset(() => {
         this.view.setViewState("game-state-on-landing");
@@ -45,7 +47,7 @@ export default class Controller {
     });
 
     this.view.el("#go-back-to-main-menu-btn").addEventListener("click", (e) => {
-      this.view.resultModal.hide();
+      this.view.showModal("result", false);
 
       this.start(false);
     });
@@ -61,8 +63,10 @@ export default class Controller {
       }
 
       if (this.model.timer > 0 && this.model.isGivenCountryNameCorrect(val)) {
-        this.view.setInputStatus("correct", "The answer is correct");
         clearInterval(this.model.interval);
+
+        this.view.el("#country-name-input").blur();
+        this.view.setInputStatus("correct", "The answer is correct");
         this.model.level += 1;
 
         this.view.setViewState("game-state-on-relanding");
@@ -91,13 +95,13 @@ export default class Controller {
     this.view.el("#country-name-input").blur();
 
     const { iso, name, hint, landmark, food, continent } = this.model.getRandomCountry();
+    this.view.setCurrentCountryData(iso, hint, landmark, food, continent);
+    this.view.setCurrentGameStateData({ stage: this.model.stage, level: this.model.level });
 
     this.view.jumpToMap(iso, () => {
       this.model.country = name;
 
       this.view.setViewState("game-state-on-started");
-      this.view.setCurrentCountryData(iso, hint, landmark, food, continent);
-      this.view.setCurrentGameStateData({ stage: this.model.stage, level: this.model.level });
       this.view.el("#country-name-input").focus();
       this.view.setInputStatus("idle", "Waiting for an input");
 
@@ -113,7 +117,7 @@ export default class Controller {
         clearInterval(this.model.interval);
 
         this.view.setGameResultData(this.model.stage, this.model.country, this.model.level);
-        this.view.resultModal.show();
+        this.view.showModal("result", true);
 
         return;
       }
@@ -140,7 +144,7 @@ export default class Controller {
     this.reset(() => {
       this.model.reset();
       this.view.reset();
-      this.view.mainMenuModal.show();
+      this.view.showModal("main-menu", true);
     });
   }
 

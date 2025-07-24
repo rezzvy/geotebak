@@ -58,7 +58,15 @@ export default class Model {
     this.country = null;
     this.timer = 60;
     this.level = 1;
-    this.interval = null;
     this.takenDataset.length = 0;
+
+    if (this.interval) {
+      clearInterval(this.interval);
+      this.interval = null;
+    }
+  }
+
+  isOnMobileDevice() {
+    return /Mobi|Android/i.test(navigator.userAgent);
   }
 }

@@ -153,11 +153,21 @@ export default class View {
     return { x: v.x, y: v.y, w: v.width, h: v.height };
   }
 
-  #animateViewBox(from, to, duration = 1500) {
+  #animateViewBox(from, to) {
     return new Promise((resolve) => {
       const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-      const fps = isMobile ? 15 : 30;
+      const duration = 1500;
 
+      if (isMobile) {
+        this.mapSVGElement.setAttribute("viewBox", `${to.x} ${to.y} ${to.w} ${to.h}`);
+        setTimeout(() => {
+          resolve();
+        }, duration);
+
+        return;
+      }
+
+      const fps = 30;
       const interval = 1000 / fps;
       const easeInOutExpo = (t) => {
         return t === 0 ? 0 : t === 1 ? 1 : t < 0.5 ? Math.pow(2, 20 * t - 10) / 2 : (2 - Math.pow(2, -20 * t + 10)) / 2;
@@ -187,7 +197,9 @@ export default class View {
         if (elapsed < duration) {
           requestAnimationFrame(step);
         } else {
-          resolve();
+          setTimeout(() => {
+            resolve();
+          }, 120);
         }
       };
 

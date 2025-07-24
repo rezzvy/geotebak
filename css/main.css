@@ -103,9 +103,9 @@ p {
 
 /* States  */
 
-#gameplay,
-#map-overlay,
-.chara-overlay {
+body:not(.on-mobile) #gameplay,
+body:not(.on-mobile) #map-overlay,
+body:not(.on-mobile) .chara-overlay {
   transition: opacity 500ms ease-in-out;
 }
 
