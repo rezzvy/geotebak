@@ -134,3 +134,7 @@ body.game-state-on-landing,
 body.game-state-on-relanding {
   overflow: hidden;
 }
+
+button > img {
+  pointer-events: none;
+}
